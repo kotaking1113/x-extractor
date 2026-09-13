@@ -132,7 +132,8 @@ if run_button:
     
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch(channel="chrome", headless=True)
+            # 【修正箇所】ここで channel="chrome" を消し、クラウド標準ブラウザを使うように変更しました
+            browser = p.chromium.launch(headless=True)
             context = browser.new_context(viewport={'width': 1280, 'height': 800})
             page = context.new_page()
 
